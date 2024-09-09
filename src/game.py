@@ -6,6 +6,7 @@ class Game:
     def __init__(self):
         pygame.init()
         pygame.font.init()
+        pygame.mixer.init()  # Inicializar el mezclador de sonido
         self.screen = pygame.display.set_mode((800, 600))
         pygame.display.set_caption("Space Invaders - Aztec Edition")
         self.player = Player()
@@ -14,13 +15,22 @@ class Game:
         self.score = 0
         self.won = False
 
+        # Cargar y reproducir la música de fondo
+        pygame.mixer.music.load("assets/music/game.mp3")
+        pygame.mixer.music.play(-1)  # Reproducir en bucle
+
     def create_enemies(self):
         enemies = []
+        image_paths = [
+            ("assets/images/enemy1.png", "assets/images/enemy2.png"),
+            ("assets/images/enemy3.png", "assets/images/enemy4.png"),
+            ("assets/images/enemy5.png", "assets/images/enemy6.png")
+        ]
         for row in range(3):  # 3 filas
             for col in range(10):  # 10 columnas
                 x = 80 * col + 10
                 y = 50 * row + 10
-                enemy = Enemy(x, y)
+                enemy = Enemy(x, y, image_paths[row][0], image_paths[row][1])
                 enemies.append(enemy)
         return enemies
 
@@ -105,4 +115,3 @@ class Game:
     def restart_game(self):
         self.__init__()
         self.run()
-

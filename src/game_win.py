@@ -1,7 +1,10 @@
 import pygame
 
 def game_win_screen(screen, restart_game, score):
-    font = pygame.font.Font(None, 74)
+    
+    # Cargar la fuente pixelada
+    font_path = "assets/fonts/PressStart2P-Regular.ttf"  # Ruta a la fuente pixelada
+    font = pygame.font.Font(font_path, 74)
     text = font.render("YOU WIN!", True, (0, 255, 0))
     text_rect = text.get_rect(center=(400, 300))
     

@@ -3,16 +3,16 @@ import time
 
 class Player:
     def __init__(self):
-        self.image = pygame.image.load("assets/aztecaplayer.png")
+        self.image = pygame.image.load("assets/images/aztecaplayer.png")
         self.image = pygame.transform.scale(self.image, (50, 50))  # Ajusta el tamaño si es necesario
         self.rect = self.image.get_rect()
         self.rect.x = 370
         self.rect.y = 480
-        self.speed = 5
+        self.speed = 2
         self.bullets = []
-        self.last_shot_time = 0  # Tiempo del último disparo
+        self.last_shot_time = 1  # Tiempo del último disparo
         self.lives = 3  # Inicializar con 3 vidas
-        self.heart_image = pygame.image.load("assets/heart.png")
+        self.heart_image = pygame.image.load("assets/images/heart.png")
         self.heart_image = pygame.transform.scale(self.heart_image, (30, 30))  # Ajustar el tamaño del corazón
 
     def update(self, keys):
@@ -55,8 +55,8 @@ class Player:
 
 class Bullet:
     def __init__(self, x, y):
-        self.image = pygame.image.load("assets/bullet.png")
-        self.image = pygame.transform.scale(self.image, (35, 35))  # Ajustar el tamaño de la bala
+        self.image = pygame.image.load("assets/images/bullet.png")
+        self.image = pygame.transform.scale(self.image, (40, 40))  # Ajustar el tamaño de la bala
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y

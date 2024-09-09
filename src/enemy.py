@@ -3,10 +3,10 @@ import random
 import time
 
 class Enemy:
-    def __init__(self, x, y):
-        self.image_left = pygame.image.load("assets/enemy1.png")
+    def __init__(self, x, y, image_left_path, image_right_path):
+        self.image_left = pygame.image.load(image_left_path)
         self.image_left = pygame.transform.scale(self.image_left, (50, 50))
-        self.image_right = pygame.image.load("assets/enemy2.png")
+        self.image_right = pygame.image.load(image_right_path)
         self.image_right = pygame.transform.scale(self.image_right, (50, 50))
         self.image = self.image_left
         self.rect = self.image.get_rect()
@@ -53,7 +53,7 @@ class Enemy:
 
 class EnemyBullet:
     def __init__(self, x, y):
-        self.image = pygame.image.load("assets/fire.png")
+        self.image = pygame.image.load("assets/images/fire.png")
         self.image = pygame.transform.scale(self.image, (20, 20))
         self.rect = self.image.get_rect()
         self.rect.x = x
@@ -68,18 +68,3 @@ class EnemyBullet:
 
     def check_collision(self, other_rect):
         return self.rect.colliderect(other_rect)
-
-class EnemyBullet:
-    def __init__(self, x, y):
-        self.image = pygame.image.load("assets/fire.png")
-        self.image = pygame.transform.scale(self.image, (20, 20))
-        self.rect = self.image.get_rect()
-        self.rect.x = x
-        self.rect.y = y
-        self.speed = 1.5  # Velocidad positiva para que vaya hacia abajo
-
-    def update(self):
-        self.rect.y += self.speed
-
-    def draw(self, screen):
-        screen.blit(self.image, self.rect)
